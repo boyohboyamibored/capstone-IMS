@@ -11,4 +11,4 @@ def home():
 if __name__ == "__main__":
     """The default port is 5000, I used a different one
     when running another flask app"""
-    app.run(debug=True, port=3000)
+    app.run(debug=True)

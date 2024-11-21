@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        {% if title %}
+            <title>Noob IMS - {{title}}</title>
+        {% else %}
+            <title>Noob IMS</title>
+        {% endif %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/ccs" href="{{ url_for("static", filename="style.css") }}"/>
+    </head>
 
-  <head>
-    {% if title %}
-       <title>Noob IMS - {{title}}</title>
-    {% else %}
-        <title>Noob IMS</title>
-    {% endif %}
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/ccs" href="{{ url_for("static", filename="style.css") }}"/>
-  </head>
-
-  <body>
-    {% block content %}
-
-    {% endblock content %}
-  </body>
+    <body>
+        <header>
+            <nav class="navbar">
+                <a class="logo" href="{{ url_for("home") }}">LOGO</a>
+                <ul>
+                    <li><a href="{{ url_for("home") }}">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+        {% block content %}{% endblock %}
+        </main>
+    </body>
 </html>
