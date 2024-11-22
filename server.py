@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -13,7 +13,9 @@ def login():
     if request.method == "GET":
         return render_template("login.html")
     else:
-        return "<h1>Feature not yet available</h1>"
+        email = request.form.get("email")
+        print(email, "has logged in")
+        return render_template("index.html")
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -21,7 +23,9 @@ def sign_up():
     if request.method == "GET":
         return render_template("signup.html")
     else:
-        return "<h1>Feature not yet available</h1>"
+        email = request.form.get("email")
+        print(email, "has signed up")
+        return render_template("index.html")
 
 
 if __name__ == "__main__":

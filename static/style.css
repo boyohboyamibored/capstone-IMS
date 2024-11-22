@@ -37,3 +37,23 @@ body {
   text-decoration: none;
   padding: 5px;
 }
+
+/* login and sign up forms */
+.auth-form {
+  background-color: #b2d0e8;
+  display: block;
+  justify-content: center;
+  /* width style color */
+  border: 1px solid #333;
+  border-radius: 8px;
+  box-shadow: 0px 1px 0px 1px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  padding: 15px;
+  /* dynamic width */
+  max-width: 200px;
+}
+
+.auth-form label {
+  font-weight: bold;
+  padding: 1px;
+}
