@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>The Signup Page</h1>
+
+<div class="auth-form">
+<!-- action attribute should be equal to the target /url -->
+    <form action="/signup" method="POST">
+        <!-- the name attribute is required to
+        be able to reference them when retrieving
+        their values-->
+        <label for="fName">Firstname</label><br>
+        <input id="fName" name="fName" type="text" pattern="[A-Za-z]" maxlength="50" placeholder="John" required><br>
+
+        <label for="lName">Lastname</label><br>
+        <input id="lName" name="lName" type="text" pattern="[A-Za-z]" maxlength="50" placeholder="Neuman" required><br>
+
+        <label for="username">Username</label><br>
+        <input id="username" name="username" type="text" maxlength="30" placeholder="J_Neuman" required><br>
+
+        <label for="email">Email address</label><br>
+        <input id="email" name="email" type="email" maxlength="100" placeholder="JohnNeuman@comp.sci" required><br>
+
+        <label for="password">Password</label><br>
+        <input id="password" name="password" type="password" minlength="8" placeholder="/{6sdjK9^w0~d" required><br>
+
+        <label for="confirm-password">Confirm Password</label><br>
+        <input id="confirm-password" name="confirm-password" type="password" minlength="8" placeholder="/{6sdjK9^w0~d" required><br>
+        <input type="submit" value="Sign up">
+    </form>
+    <p>Already have an account? <a href="{{ url_for("login") }}">Login</a></p>
+</div>
+
+{% endblock content %}
