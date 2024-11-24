@@ -1,8 +1,16 @@
 # A Noob-tier Inventory Manangement System (NIMS)
 
 ## Setup
+In a terminal...
 
-I'll add later
+```bash
+git clone https://github.com/boyohboyamibored/noob-IMS noob-ims
+cd noob-ims
+# make a virtual environment
+python -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+```
 
 ## Backstory
 
