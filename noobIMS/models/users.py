@@ -1,9 +1,10 @@
+from flask_login import UserMixin
 from sqlalchemy import func
 
 from noobIMS import db
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = "users"
     id = db.Column("id", db.Integer, primary_key=True)
     firstname = db.Column(db.String(50), nullable=False)
