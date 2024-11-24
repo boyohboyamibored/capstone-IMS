@@ -5,18 +5,38 @@
 <div class='auth-form'>
 <!-- action attribute should be equal to the target /url -->
     <form action="/login" method="POST">
-        <!-- the name attribute is required to
-        be able to reference them when retrieving
+        <!-- the name attribute is required to be 
+        able to reference them when retrieving
         their values-->
-        <label for="email">Email address</label><br>
-        <input id="email" name="email" type="email" required><br>
+        {{ form.hidden_tag() }}
 
-        <label for="password">Password</label><br>
-        <input id="password" name="password" type="password" required><br>
+        {{ form.email.label }}
+        {{ form.email }}
+        {% if form.email.errors %}
+            {% for error in form.email.errors %}
+            <div class="invalid-feedback">
+                {{ error }}
+            </div>
+            {% endfor %} 
+        {% endif %}
 
-        <input type="submit" value="Login">
+        {{ form.password.label }}
+        {{ form.password }}
+        {% if form.password.errors %}
+            {% for error in form.password.errors %}
+            <div class="invalid-feedback">
+                {{ error }}
+            </div>
+            {% endfor %} 
+        {% endif %}
+
+        {{ form.remember.label }}
+        {{ form.remember }}
+
+        <br>
+        {{ form.submit }}
     </form>
-    <p>Already have an account? <a href="{{ url_for("sign_up") }}">Sign up</a></p>
+    <legend>Don't have an account? <a href="{{ url_for("sign_up") }}">Sign up</a></legend>
 </div>
 
 {% endblock content %}

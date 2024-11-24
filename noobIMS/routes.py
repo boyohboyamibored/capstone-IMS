@@ -1,6 +1,8 @@
-from flask import flash, redirect, render_template, request, url_for
+from flask import flash, redirect, render_template, url_for
 
 from noobIMS import app
+
+from .forms import LoginForm, SignupForm
 
 
 @app.route("/", methods=["GET"])
@@ -10,36 +12,37 @@ def home():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST":
-        """Getting the form inputs based on name or maybe id"""
-        email = request.form.get("email")
-        password = request.form.get("password")
-        flash("Login successful", "info")
-        print(email, "has logged in")
+    form = LoginForm()
+    if form.validate_on_submit():
+        """Getting the form inputs based on variable name"""
+        email = form.email.data
+        password = form.password.data
+
+        flash("Login successful", "success")
+        print(f"{email} has logged in")
         return redirect(url_for("home"))
-    else:
-        return render_template("login.html")
+    return render_template("login.html", form=form)
 
 
 @app.route("/logout", methods=["GET"])
 def logout():
-    flash("Logout sucessful", "info")
+    flash("Logged out sucessfully", "success")
     return redirect(url_for("home"))
 
 
 @app.route("/signup", methods=["GET", "POST"])
 def sign_up():
-    if request.method == "POST":
+    form = SignupForm()
+    if form.validate_on_submit():
         """Getting them to make a user"""
-        fName = request.form.get("fName")
-        lName = request.form.get("lName")
-        username = request.form.get("username")
-        email = request.form.get("email")
-        password = request.form.get("password")
-        confirm_password = request.form.get("confirm-password")
+        fName = form.firstname.data
+        lName = form.lastname.data
+        email = form.email.data
+        username = form.username.data
+        password = form.password.data
+        confirm_password = form.confirm_password.data
 
-        flash("Account created successful", "info")
-        print(email, "has signed up")
+        flash(f"Account created for {email} successful", "success")
+        print(f"{email} has signed up")
         return redirect(url_for("home"))
-    else:
-        return render_template("signup.html")
+    return render_template("signup.html", form=form)

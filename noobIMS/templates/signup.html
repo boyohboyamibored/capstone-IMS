@@ -4,30 +4,78 @@
 
 <div class="auth-form">
 <!-- action attribute should be equal to the target /url -->
-    <form action="/signup" method="POST">
-        <!-- the name attribute is required to
-        be able to reference them when retrieving
-        their values-->
-        <label for="fName">Firstname</label><br>
-        <input id="fName" name="fName" type="text" pattern="[A-Za-z]" maxlength="50" placeholder="John" required><br>
+    <form action="signup" method="POST">
+        {{ form.hidden_tag() }}
 
-        <label for="lName">Lastname</label><br>
-        <input id="lName" name="lName" type="text" pattern="[A-Za-z]" maxlength="50" placeholder="Neuman" required><br>
+        {{ form.firstname.label }}
+        {{ form.firstname }}
 
-        <label for="username">Username</label><br>
-        <input id="username" name="username" type="text" maxlength="30" placeholder="J_Neuman" required><br>
+        {% if form.firstname.errors %}
+            <div class="invalid-feedback">
+                {{ error }}
+            </div>
+        {% else %}
+        {% endif %}
 
-        <label for="email">Email address</label><br>
-        <input id="email" name="email" type="email" maxlength="100" placeholder="JohnNeuman@comp.sci" required><br>
+        {{ form.lastname.label }}
+        {{ form.lastname }}
 
-        <label for="password">Password</label><br>
-        <input id="password" name="password" type="password" minlength="8" placeholder="/{6sdjK9^w0~d" required><br>
+        {% if form.lastname.errors %}
+            {% for error in form.lastname.errors %}
+            <div class="invalid-feedback">
+                {{ error }}
+            </div>
+            {% endfor %}
+        {% endif %}
 
-        <label for="confirm-password">Confirm Password</label><br>
-        <input id="confirm-password" name="confirm-password" type="password" minlength="8" placeholder="/{6sdjK9^w0~d" required><br>
-        <input type="submit" value="Sign up">
+        {{ form.username.label }}
+        {{ form.username }}
+
+        {% if form.username.errors %}
+            {% for error in form.username.errors %}
+            <div class="invalid-feedback">
+                {{ error }}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        {{ form.email.label }}
+        {{ form.email }}
+
+        {% if form.username.errors %}
+            {% for error in form.email.errors %}
+            <div class="invalid-feedback">
+                {{ error }}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        {{ form.password.label }}
+        {{ form.password }}
+
+        {% if form.password.errors %}
+            {% for error in form.password.errors %}
+            <div class="invalid-feedback">
+                {{ error }}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        {{ form.confirm_password.label }}
+        {{ form.confirm_password }}
+
+        {% if form.confirm_password.errors %}
+            {% for error in form.confirm_password.errors %}
+            <div class="invalid-feedback">
+                {{ error }}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <br>
+        {{ form.submit }}
     </form>
-    <p>Already have an account? <a href="{{ url_for("login") }}">Login</a></p>
+    <legend>Already have an account? <a href="{{ url_for("login") }}">Login</a></legend>
 </div>
 
 {% endblock content %}

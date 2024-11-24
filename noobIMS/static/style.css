@@ -57,3 +57,52 @@ body {
   font-weight: bold;
   padding: 1px;
 }
+
+.auth-form input {
+  margin-bottom: 5px;
+}
+
+.auth-form input[type="submit"] {
+  background-color: rgba(71, 162, 237, 0.5);
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.auth-form input[type="submit"]:hover {
+  background-color: rgba(71, 162, 237, 1);
+}
+
+.invalid-feedback {
+  color: red;
+}
+
+/* flash messagees */
+.alert {
+  padding: 5px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+.alert-success {
+  background-color: #35e036;
+}
+
+.alert-error {
+  background-color: #fc465b;
+}
+
+.alert-info {
+  background-color: #40d1f9;
+}
+
+.alert-success::before {
+  content: "✓ ";
+}
+.alert-error::before {
+  content: "✗ ";
+}
+.alert-info::before {
+  content: "i ";
+}
